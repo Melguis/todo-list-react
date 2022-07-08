@@ -1,0 +1,86 @@
+.container {
+    background: var(--gray-500);
+    border: 1px solid var(--gray-400);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container div {
+    display: flex;
+    align-items: center;
+}
+
+.container:not(:first-child) {
+    margin-top: 0.75rem;
+}
+
+.circle {
+    margin: 1.25rem 0rem;
+    margin-left: 1.25rem;
+    margin-top: 1rem;
+}
+
+.circle input {
+    display: none;
+}
+
+.checkbox {
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid var(--blue);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 0.2s, border-color 0.2s
+}
+
+.checkbox::after {
+    font-size: 0.75rem;
+    content: '\2714';
+    color: var(--gray-100);
+    transform: scale(0);
+    transition: transform 0.2s;
+}
+
+.circle input:checked + .checkbox {
+    background: var(--purple);
+    border-color: var(--purple);
+}
+
+.circle input:checked + .checkbox::after {
+    transform: scale(1);
+}
+
+.task h3 {
+    padding: 1rem 2.25rem 1rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--gray-100);
+}
+
+.markedtask h3 {
+    padding: 1rem 2.25rem 1rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--gray-300);
+    text-decoration: line-through;
+}
+
+.icon {
+    margin-right: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    color: var(--gray-300);
+    cursor: pointer;
+    border: 0;
+    border-radius: 2px;
+    line-height: 0;
+}
+
+.icon:hover {
+    color: var(--red)
+}

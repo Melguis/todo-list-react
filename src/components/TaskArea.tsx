@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { Task } from './Task'
 
 import styles from '../styles/TaskArea.module.css'
+
+import { MarkedContext } from '../hooks/useMarked'
 
 interface TaskAreaProps {
   createdTasks: number,
@@ -11,9 +13,9 @@ interface TaskAreaProps {
 }
 
 export function TaskArea ({ createdTasks, tasks, onDeleteTask }: TaskAreaProps) {
-
-  const [ taskDoneCount, setTaskDoneCount ] = useState(0);
   
+  const { counter } = useContext(MarkedContext)
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -24,14 +26,14 @@ export function TaskArea ({ createdTasks, tasks, onDeleteTask }: TaskAreaProps) 
 
         <div className={styles.done}>
           <h4>Concluídas</h4>
-          <h5>{taskDoneCount} de {createdTasks}</h5>
+          <h5>{counter} de {createdTasks}</h5>
         </div>
       </header>
 
       <main className={styles.tasks}>
         {
           tasks.map(task => {
-            return <Task content={task} onDeleteTask={onDeleteTask}/>
+            return <Task key={task} content={task} onDeleteTask={onDeleteTask}/>
           })
         }
       </main>

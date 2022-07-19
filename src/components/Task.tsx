@@ -1,4 +1,6 @@
-import { useState, useRef } from 'react'
+import { useContext, useState } from 'react'
+
+import { MarkedContext } from '../hooks/useMarked'
 
 import { Trash } from 'phosphor-react'
 
@@ -12,16 +14,24 @@ interface TaskProps {
 export function Task({ content, onDeleteTask }: TaskProps) {
 
   const [ circleMarked, setCircleMarked ] = useState(false);
-  const [ doneTask, setDoneTask ] = useState(0)
+  const { counter, setCounter } = useContext(MarkedContext)
 
   function handleDeleteTask() {
     onDeleteTask(content)
-    setDoneTask(doneTask - 1)
+
+    if(circleMarked) {
+      setCounter(counter - 1)
+    }
   }
 
   function handleCircleMarked() {
     setCircleMarked(!circleMarked);
-    setDoneTask(doneTask + 1)
+    
+    if(!circleMarked) {
+      setCounter(counter + 1)
+    } else {
+      setCounter(counter - 1)
+    }
   }
 
   return (

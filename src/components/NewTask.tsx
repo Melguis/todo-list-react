@@ -1,4 +1,5 @@
 import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react'
+
 import { TaskArea } from './TaskArea'
 
 import { PlusCircle } from 'phosphor-react'
@@ -62,7 +63,7 @@ export function NewTask() {
       </div>
 
       <div className={styles.taskArea}>
-        <TaskArea createdTasks={tasksCounter} tasks={tasks} onDeleteTask={deleteTask} />
+        <TaskArea  createdTasks={tasksCounter} tasks={tasks} onDeleteTask={deleteTask} />
       </div>
     </>
   )

@@ -1,11 +1,15 @@
 import { Header } from './components/Header'
 
+import { MarkedContextProvider } from './hooks/useMarked'
+
 import './global.css'
 
 function App() {
 
   return (
-    <Header />
+    <MarkedContextProvider>
+      <Header />
+    </MarkedContextProvider>
   )
 }
 
